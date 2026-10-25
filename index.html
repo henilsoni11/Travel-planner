@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YB8Z679M9K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YB8Z679M9K');
+    </script>
+
+    <title>My Trip ✈️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="background">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+</div>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>✈️</span>
+
+        <div>
+            <strong>My Trip</strong>
+            <small>Travel Companion</small>
+        </div>
+    </div>
+
+    <nav>
+
+        <button class="nav-btn active"
+                onclick="showPage('dashboard')">
+            🧭 Dashboard
+        </button>
+
+        <button class="nav-btn"
+                onclick="showPage('packing')">
+            🎒 Packing
+        </button>
+
+        <button class="nav-btn"
+                onclick="showPage('places')">
+            📍 Places
+        </button>
+
+        <button class="nav-btn"
+                onclick="showPage('budget')">
+            💰 Budget
+        </button>
+
+        <button class="nav-btn"
+                onclick="showPage('photos')">
+            📸 Photos
+        </button>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+
+<!-- =================================================
+     DASHBOARD
+================================================= -->
+
+<section id="dashboard" class="page active-page">
+
+    <div class="hero">
+
+        <div>
+
+            <p class="eyebrow">
+                YOUR PERSONAL TRAVEL COMPANION
+            </p>
+
+            <h1 id="dashboardTripName">
+                My Dream Trip ✈️
+            </h1>
+
+            <p id="dashboardDestination">
+                Plan it. Experience it. Remember it.
+            </p>
+
+            <div class="countdown">
+
+                <div>
+                    <strong id="daysLeft">—</strong>
+                    <span>Days</span>
+                </div>
+
+                <div>
+                    <strong id="hoursLeft">—</strong>
+                    <span>Hours</span>
+                </div>
+
+                <div>
+                    <strong id="minutesLeft">—</strong>
+                    <span>Minutes</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TRIP DETAILS -->
+
+    <div class="glass-card">
+
+        <div class="section-title">
+
+            <div>
+                <span class="icon">⚙️</span>
+
+                <div>
+                    <h2>Trip Details</h2>
+                    <p>Set your trip information</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="input-group">
+
+                <label>Trip Name</label>
+
+                <input
+                    id="tripName"
+                    type="text"
+                    placeholder="Goa Trip 2026">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Destination</label>
+
+                <input
+                    id="destination"
+                    type="text"
+                    placeholder="Goa">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Trip Start</label>
+
+                <input
+                    id="tripStart"
+                    type="date">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Trip End</label>
+
+                <input
+                    id="tripEnd"
+                    type="date">
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="saveTripDetails()">
+
+            💾 Save Trip
+
+        </button>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">🎒</div>
+
+            <div>
+                <span>Packing</span>
+                <strong id="packingStat">0 / 0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">📍</div>
+
+            <div>
+                <span>Places</span>
+                <strong id="placesStat">0 / 0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">💰</div>
+
+            <div>
+                <span>Remaining</span>
+                <strong id="remainingStat">₹0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">📸</div>
+
+            <div>
+                <span>Memories</span>
+                <strong id="photoStat">0</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TODAY -->
+
+    <div class="glass-card">
+
+        <div class="section-title">
+
+            <div>
+                <span class="icon">🗓️</span>
+
+                <div>
+                    <h2>Today's Plan</h2>
+                    <p>Your next activities</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="dashboardToday"></div>
+
+    </div>
+
+
+    <!-- DAILY SPENDING -->
+
+    <div class="glass-card">
+
+        <div class="section-title">
+
+            <div>
+                <span class="icon">🧮</span>
+
+                <div>
+                    <h2>Daily Spending</h2>
+                    <p>How much can you approximately spend per day?</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="daily-money">
+
+            <div>
+                <span>Remaining</span>
+                <strong id="dailyRemaining">₹0</strong>
+            </div>
+
+            <div>
+                <span>Days Left</span>
+                <strong id="dailyDays">0</strong>
+            </div>
+
+            <div>
+                <span>Recommended / Day</span>
+                <strong id="dailyLimit">₹0</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- IMPORTANT INFO -->
+
+    <div class="glass-card">
+
+        <div class="section-title">
+
+            <div>
+                <span class="icon">🆘</span>
+
+                <div>
+                    <h2>Important Trip Information</h2>
+                    <p>Keep useful information in one place</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="input-group">
+                <label>🏨 Hotel / Stay</label>
+                <input id="hotelName"
+                       placeholder="Hotel name">
+            </div>
+
+            <div class="input-group">
+                <label>📍 Hotel Address</label>
+                <input id="hotelAddress"
+                       placeholder="Hotel address">
+            </div>
+
+            <div class="input-group">
+                <label>🚆 Train / Flight</label>
+                <input id="transport"
+                       placeholder="Train 12901">
+            </div>
+
+            <div class="input-group">
+                <label>⏰ Departure Time</label>
+                <input id="departureTime"
+                       placeholder="7:30 PM">
+            </div>
+
+            <div class="input-group">
+                <label>📞 Important Contact</label>
+                <input id="importantContact"
+                       placeholder="Name / number">
+            </div>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="saveImportantInfo()">
+
+            💾 Save Information
+
+        </button>
+
+    </div>
+
+
+    <!-- NOTES -->
+
+    <div class="glass-card">
+
+        <div class="section-title">
+
+            <div>
+                <span class="icon">📝</span>
+
+                <div>
+                    <h2>Trip Notes</h2>
+                    <p>Things you don't want to forget</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <textarea
+            id="tripNotes"
+            placeholder="Remember to visit the sunset point..."
+            oninput="saveNotes()"></textarea>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     PACKING
+================================================= -->
+
+<section id="packing" class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <p class="eyebrow">BE READY</p>
+
+            <h1>🎒 Packing Checklist</h1>
+
+            <p>Don't forget the little things.</p>
+
+        </div>
+
+
+        <div class="progress-circle">
+
+            <strong id="packingPercentage">0%</strong>
+
+            <span>packed</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="glass-card add-card">
+
+        <h2>Add something to pack</h2>
+
+        <div class="add-row">
+
+            <input
+                id="packingInput"
+                placeholder="e.g. Power bank">
+
+            <button
+                class="primary-btn"
+                onclick="addPackingItem()">
+
+                + Add
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="progress-bar-container">
+
+        <div class="progress-info">
+
+            <span>Packing progress</span>
+
+            <strong id="packingProgressText">
+                0 / 0
+            </strong>
+
+        </div>
+
+        <div class="progress-bar">
+            <div id="packingProgress"></div>
+        </div>
+
+    </div>
+
+
+    <div id="packingList" class="check-list"></div>
+
+</section>
+
+
+
+<!-- =================================================
+     PLACES
+================================================= -->
+
+<section id="places" class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <p class="eyebrow">EXPLORE</p>
+
+            <h1>📍 Places I Wish To Go</h1>
+
+            <p>Make your travel wishlist.</p>
+
+        </div>
+
+
+        <div class="progress-circle">
+
+            <strong id="placesPercentage">0%</strong>
+
+            <span>visited</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="glass-card add-card">
+
+        <h2>Add a place</h2>
+
+        <div class="add-row">
+
+            <input
+                id="placeInput"
+                placeholder="e.g. Sabarmati Riverfront">
+
+            <button
+                class="primary-btn"
+                onclick="addPlace()">
+
+                + Add
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="progress-bar-container">
+
+        <div class="progress-info">
+
+            <span>Places explored</span>
+
+            <strong id="placesProgressText">
+                0 / 0
+            </strong>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div id="placesProgress"></div>
+
+        </div>
+
+    </div>
+
+
+    <div id="placesList" class="check-list"></div>
+
+
+    <!-- TODAY PLANNER -->
+
+    <div class="glass-card">
+
+        <div class="section-title">
+
+            <div>
+
+                <span class="icon">🗓️</span>
+
+                <div>
+                    <h2>Day Planner</h2>
+                    <p>Add activities for your trip</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="input-group">
+
+                <label>Day</label>
+
+                <input
+                    id="planDay"
+                    type="number"
+                    min="1"
+                    placeholder="1">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Time</label>
+
+                <input
+                    id="planTime"
+                    type="time">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Activity</label>
+
+                <input
+                    id="planActivity"
+                    placeholder="Visit beach">
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="addPlan()">
+
+            + Add Activity
+
+        </button>
+
+    </div>
+
+
+    <div id="plannerList" class="planner-list"></div>
+
+</section>
+
+
+
+<!-- =================================================
+     BUDGET
+================================================= -->
+
+<section id="budget" class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <p class="eyebrow">MONEY MATTERS</p>
+
+            <h1>💰 Trip Budget</h1>
+
+            <p>Track every rupee.</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOTAL BUDGET -->
+
+    <div class="glass-card">
+
+        <div class="section-title">
+
+            <div>
+
+                <span class="icon">💰</span>
+
+                <div>
+
+                    <h2>Total Trip Budget</h2>
+
+                    <p>Set your maximum spending limit</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="budget-input">
+
+            <span>₹</span>
+
+            <input
+                id="totalBudget"
+                type="number"
+                placeholder="5000">
+
+            <button
+                class="primary-btn"
+                onclick="saveBudget()">
+
+                Save Budget
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- BUDGET CARDS -->
+
+    <div class="budget-grid">
+
+        <div class="money-card total">
+
+            <span>Total Budget</span>
+
+            <strong id="budgetTotal">₹0</strong>
+
+        </div>
+
+
+        <div class="money-card spent">
+
+            <span>Total Spent</span>
+
+            <strong id="budgetSpent">₹0</strong>
+
+        </div>
+
+
+        <div class="money-card left">
+
+            <span>Remaining</span>
+
+            <strong id="budgetRemaining">₹0</strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- TRAVELLERS -->
+
+    <div class="glass-card">
+
+        <div class="section-title">
+
+            <div>
+
+                <span class="icon">👥</span>
+
+                <div>
+
+                    <h2>Travellers</h2>
+
+                    <p>Add everyone travelling with you</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="add-row">
+
+            <input
+                id="travellerInput"
+                placeholder="e.g. Rahul">
+
+            <button
+                class="primary-btn"
+                onclick="addTraveller()">
+
+                + Add
+
+            </button>
+
+        </div>
+
+
+        <div id="travellerList"
+             class="traveller-list"></div>
+
+    </div>
+
+
+    <!-- ADD EXPENSE -->
+
+    <div class="glass-card">
+
+        <div class="section-title">
+
+            <div>
+
+                <span class="icon">➕</span>
+
+                <div>
+
+                    <h2>Add Expense</h2>
+
+                    <p>What did you spend and who paid?</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="input-group">
+
+                <label>Where did you spend?</label>
+
+                <input
+                    id="expenseName"
+                    placeholder="Sri Ram Kachori">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>How much?</label>
+
+                <input
+                    id="expenseAmount"
+                    type="number"
+                    placeholder="45">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Who paid?</label>
+
+                <select id="expensePayer">
+                    <option value="">
+                        Select traveller
+                    </option>
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="addExpense()">
+
+            + Add Expense
+
+        </button>
+
+    </div>
+
+
+    <!-- PAYMENT SUMMARY -->
+
+    <div class="glass-card">
+
+        <div class="section-title">
+
+            <div>
+
+                <span class="icon">👥</span>
+
+                <div>
+
+                    <h2>Who Paid What?</h2>
+
+                    <p>Total amount paid by each traveller</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="paymentSummary"></div>
+
+    </div>
+
+
+    <!-- EXPENSE HISTORY -->
+
+    <div class="glass-card">
+
+        <div class="section-title">
+
+            <div>
+
+                <span class="icon">🧾</span>
+
+                <div>
+
+                    <h2>Expense History</h2>
+
+                    <p>Everything you've spent</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="expenseList"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     PHOTOS
+================================================= -->
+
+<section id="photos" class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <p class="eyebrow">MEMORIES</p>
+
+            <h1>📸 Trip Photos</h1>
+
+            <p>Keep your favourite moments.</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="glass-card photo-upload">
+
+        <div class="upload-icon">
+            📸
+        </div>
+
+        <h2>Add a memory</h2>
+
+        <p>Take a photo or select one from your gallery.</p>
+
+
+        <label class="upload-btn">
+
+            📷 Choose / Take Photo
+
+            <input
+                id="photoInput"
+                type="file"
+                accept="image/*"
+                multiple
+                onchange="handlePhotos(event)"
+                hidden>
+
+        </label>
+
+
+        <small>
+            Photos are stored locally in your browser.
+        </small>
+
+    </div>
+
+
+    <div id="photoGallery"
+         class="photo-grid"></div>
+
+</section>
+
+</main>
+
+
+
+<!-- MOBILE NAV -->
+
+<div class="mobile-nav">
+
+    <button onclick="showPage('dashboard')">
+        🧭
+        <span>Home</span>
+    </button>
+
+    <button onclick="showPage('packing')">
+        🎒
+        <span>Pack</span>
+    </button>
+
+    <button onclick="showPage('places')">
+        📍
+        <span>Places</span>
+    </button>
+
+    <button onclick="showPage('budget')">
+        💰
+        <span>Budget</span>
+    </button>
+
+    <button onclick="showPage('photos')">
+        📸
+        <span>Photos</span>
+    </button>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
